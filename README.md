@@ -1,1 +1,1 @@
-# linlangwen-docs
+# LuminaPJ Docs
