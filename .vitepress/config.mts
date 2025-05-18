@@ -8,20 +8,26 @@ export default defineConfig({
     themeConfig: {
         logo: '/assets/Icon.png', // https://vitepress.dev/reference/default-theme-config
         nav: [{text: '首页', link: '/'}, {text: '使用指南', link: '/usage/overview', activeMatch: '/usage/'}, {
-            text: '开发指导', link: '/develop/quick-start', activeMatch: '/develop/'
-        }],
+            text: '部署指导', link: '/deploy/prepare', activeMatch: '/deploy/'
+        }, {text: '开发指导', link: '/develop/quick-start', activeMatch: '/develop/'}],
         sidebar: {
             '/usage/': [{
                 text: '基础',
                 items: [{text: '概述', link: '/usage/overview'}, {text: '快速开始', link: '/usage/quick-start'},]
-            }, {text: '管理端', items: [{text: '快速开始', link: '/usage/admin-quick-start'},]}], '/develop': [{
+            }, {text: '管理端', items: [{text: '快速开始', link: '/usage/admin-quick-start'},]}],
+            '/deploy/': [{text: '基础', items: [{text: '准备工作', link: '/deploy/prepare'}]}, {
+                text: '服务端部署', items: [{text: '部署', link: '/deploy/server-deploy'},]
+            }, {
+                text: '微信小程序部署', items: [{text: '部署', link: '/deploy/weixin-mp-deploy'},]
+            }, {text: '管理端部署', items: [{text: '部署', link: '/deploy/admin-deploy'},]},],
+            '/develop/': [{
                 text: '开发指导', items: [{text: '快速开始', link: '/develop/quick-start'},]
             }, {
-                text: 'Ktor 后端开发', items: [{text: '快速开始', link: '/develop/ktor-quick-start'}, {
-                    text: '部署', link: '/develop/ktor-deploy'
-                }],
+                text: 'Ktor 后端开发', items: [{text: '快速开始', link: '/develop/ktor-quick-start'}],
             }, {
-                text: '微信小程序用户端开发', items: [{text: '快速开始', link: '/develop/weixin-mp-quick-start'},]
+                text: '微信小程序用户端开发', items: [{text: '快速开始', link: '/develop/weixin-mp-quick-start'}, {
+                    text: '服务端 API 参考', link: '/develop/api-reference'
+                }]
             }, {text: 'Next.js 管理端开发', items: [{text: '快速开始', link: '/develop/nextjs-quick-start'},]}]
         },
         socialLinks: [{icon: 'github', link: 'https://github.com/LuminaPJ'}],
@@ -52,6 +58,11 @@ export default defineConfig({
         returnToTopLabel: '返回顶部',
         sidebarMenuLabel: '导航',
         externalLinkIcon: true,
-        outline: {label: '文章目录'}
+        outline: {label: '文章目录', level: [2, 3]}
+    },
+    markdown: {
+        container: {
+            tipLabel: '提示', warningLabel: '注意', dangerLabel: '危险', infoLabel: '注释', detailsLabel: '展开详情'
+        }, image: {lazyLoading: true}
     }
 })
