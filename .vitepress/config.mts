@@ -23,7 +23,7 @@ export default defineConfig({
             '/develop/': [{
                 text: '开发指导', items: [{text: '快速开始', link: '/develop/quick-start'},]
             }, {
-                text: 'Ktor 后端开发', items: [{text: '快速开始', link: '/develop/ktor-quick-start'}],
+                text: 'Ktor 后端开发', items: [{text: 'Kotlin 入门指导', link: '/develop/kotlin-quick-start'}, {text: '快速开始', link: '/develop/ktor-quick-start'}],
             }, {
                 text: '微信小程序用户端开发', items: [{text: '快速开始', link: '/develop/weixin-mp-quick-start'}, {
                     text: '服务端 API 参考', link: '/develop/api-reference'
