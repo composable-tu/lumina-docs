@@ -11,7 +11,14 @@ Kotlin 是一种开源静态类型编程语言，面向 JVM、Android、JavaScri
 - **Kotlin 可运行在 Java 虚拟机（JVM）平台上**：Java 能做的所有事情 Kotlin 都能做，并且比编写 Java 更轻松。可以在 Kotlin 代码中调用 Java 代码，或者在 Java 代码中调用 Kotlin 代码。
 - **Kotlin 协程让异步代码像阻塞代码一样易于使用**：协程可大幅简化后台任务管理，例如网络调用、本地数据访问等任务的管理。
 
-来几个简单代码例，这是 Java 实现打印 `Hello World`：
+来几个简单代码例，这是实现打印 `Hello World`：
+
+::: code-group
+```Kotlin
+fun main() {
+    println("Hello World!")
+}
+```
 
 ```Java
 public class Main {
@@ -20,16 +27,21 @@ public class Main {
     }
 }
 ```
+:::
 
-这是 Kotlin：
+这是实现数据类：
 
+::: code-group
 ```Kotlin
-fun main() {
-    println("Hello World!")
-}
-```
+data class Person(
+    var name: String,
+    var age: Int
+)
 
-这是 Java 实现数据类：
+val person = Person("Kotlin", 18)
+println(person.age) // 不需要手动实现 getter 方法即可访问属性
+person.name = "Lumina" // 不需要手动实现 setter 方法即可修改属性
+```
 
 ```Java
 public class Person {
@@ -47,39 +59,57 @@ public class Person {
     public void setAge(int age) { this.age = age; }
 }
 ```
+:::
 
-这是 Kotlin：
+这是实现单例模式类：
 
+::: code-group
 ```Kotlin
-data class Person(
-    var name: String,
-    var age: Int
-)
+object Singleton {
+    var config: String = "Default"
+}
+
+Singleton.config = "New Config"
+println(Singleton.config) // "New Config"
 ```
 
-```Kotlin
-fun main() {
-    val person = Person("Kotlin", 18)
-    println(person.age) // 不需要手动实现 getter 方法即可访问属性
-    person.name = "Lumina" // 不需要手动实现 setter 方法即可修改属性
+```Java
+public class Singleton {
+    private static final Singleton INSTANCE = new Singleton();
+    private String config = "Default";
+
+    private Singleton() {}
+
+    public static Singleton getInstance() {
+        return INSTANCE;
+    }
+
+    public String getConfig() {
+        return config;
+    }
+
+    public void setConfig(String config) {
+        this.config = config;
+    }
 }
 ```
+:::
 
-这是 Java 防御空指针：
+这是防御空指针：
+
+::: code-group
+```Kotlin
+person?.name?.let {
+    println(it) // 仅在非空时执行
+}
+```
 
 ```Java
 if (person != null && person.getName() != null) {
     System.out.println(person.getName());
 }
 ```
-
-这是 Kotlin：
-
-```Kotlin
-person?.name?.let {
-    println(it) // 仅在非空时执行
-}
-```
+:::
 
 ## Kotlin 基本语法
 
@@ -94,6 +124,18 @@ Kotlin 的变量声明方式与 Java 不同，Kotlin 使用两个不同的关键
 val name = "Kotlin"
 var age = 18
 ```
+
+::: info
+`val` 声明的变量是只读变量，它的引用不可更改，但并不代表其引用对象也必须不可变，依然可以修改引用对象的可变成员。
+:::
+
+::: tip
+在 Kotlin 编程中，请尽可能优先使用 `val` 来声明本身不可变的变量。
+
+这是⼀种防御性的编码思维模式，更加安全和可靠，因为变量的值永远不会在其他地方被修改（采用反射技术的情况除外）。
+
+在 Java 中进行多线程开发时，由于 Java 的变量默认都是可变的，状态共享使得开发工作很容易出错。Kotlin 的不可变性则可以在很大程度上避免这⼀点。
+:::
 
 ### 基本类型
 
@@ -132,7 +174,7 @@ val ageString = age.toString()
 
 ### 字符串模板
 
-Kotlin 支持字符串模板，即在字符串中插入变量，使用 `$变量名` 或 `${变量名}` 表示在字符串中插入变量：
+Kotlin 支持字符串模板，即在字符串中插入变量或表达式，使用 `$变量名或表达式` 或 `${变量名或表达式}` 表示在字符串中插入变量或表达式：
 
 ```Kotlin
 val name = "Kotlin"
@@ -150,6 +192,12 @@ var name: String? = "Kotlin"
 name = null // 可赋值 null 而不报错
 ```
 
+::: info
+Kotlin 通过“明确的 Null 与非 Null”解决 `NullPointerException` 问题：
+
+变量默认不可为空，可空类型需显式声明（如 `String?`），编译器会在编译期强制检查，而非依赖运行时注解（Java 的 `@Nullable`）。
+:::
+
 Kotlin 提供了 `?.`、`?:`、`!!` 等 Null 安全操作符，用于处理 `null` 值：
 
 - `?.`：安全调用操作符，用于在对象不为 `null` 时调用其方法或访问其属性。如果变量为 `null`，则返回 `null`，否则返回变量的值
@@ -160,7 +208,7 @@ Kotlin 提供了 `?.`、`?:`、`!!` 等 Null 安全操作符，用于处理 `nul
 val name: String? = null
 val nameUpper = name?.toUpperCase() // null
 val nameUpperOrDefault = name?.toUpperCase() ?: "Default" // "Default"
-val nameUpper2 = name!!.toUpperCase() // 抛出异常
+val nameUpper2 = name!!.toUpperCase() // 抛出异常 [!code error]
 ```
 
 ### 集合类型
@@ -219,7 +267,7 @@ list.forEach {
     println(it)
 }
 list.forEachIndexed { index, element ->
-    println("索引：$index, 值：$element") // 例如 索引：0, 值：5
+    println("索引：$index, 值：$element") // 例如 "索引：0, 值：5"
 }
 
 val map = mapOf(1 to "One", 2 to "Two", 3 to "Three")
@@ -322,8 +370,8 @@ class Person(val name: String, val age: Int) {
 
 val person = Person("Kotlin", 18)
 println(person.name) // "Kotlin"
-println(person.privateName) // 编译时报错：访问失败
-println(person.getPrivateName()) // "Kotlin"
+println(person.privateName) // 编译时报错：访问失败 [!code --]
+println(person.getPrivateName()) // "Kotlin" [!code ++]
 ```
 
 ## 后续
