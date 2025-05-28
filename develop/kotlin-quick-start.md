@@ -1,4 +1,4 @@
-# 面向 Java 开发者的 Kotlin 入门指导 <Badge type="tip" text="尚未完成" />
+# 面向 Java 开发者的 Kotlin 入门指导
 
 Kotlin 是一种开源静态类型编程语言，面向 JVM、Android、JavaScript、Wasm 和 Native。它由 [JetBrains](https://www.jetbrains.com/) 开发，旨在提升开发者的开发效率。它简洁、安全，能够与 Java 和其他语言互操作，并提供多种跨平台复用代码的方式，从而实现高效的编程。
 
@@ -149,6 +149,10 @@ Kotlin 在 JVM 平台的 8 种基本数据类型如下：
 - 浮点类型：`Float`、`Double`，默认 `Double`
 - 字符类型：`Char`
 - 布尔类型：`Boolean`
+
+::: info
+Kotlin 中 `Int` 等基本数据类型的首字母是大写的，而 Java 中 `int` 的首字母是小写的。这表示 Kotlin 完全抛弃了 Java 中的基本数据类型，全部使用了对象数据类型。在 Java 中 `int` 是关键字，而在 Kotlin 中 `Int` 变成了一个类，它拥有自己的方法和继承结构。
+:::
 
 如果要指定变量的类型，可以在变量名后加上类型声明：
 
@@ -374,6 +378,15 @@ println(person.privateName) // 编译时报错：访问失败 [!code --]
 println(person.getPrivateName()) // "Kotlin" [!code ++]
 ```
 
+Kotlin 类同样支持类似于 Java 的类继承，使用 `:` 符号来指定父类：
+
+```Kotlin
+open class Person(val name: String, val age: Int)
+class Student(name: String, age: Int, val grade: Int) : Person(name, age)
+
+val student = Student("Kotlin", 18, 1)
+```
+
 ## 后续
 
 到目前为止，上述内容已经足够支撑编写强大的 Kotlin/JVM 应用了。如需了解 Kotlin 的更多内容，请参阅[官方 Kotlin 文档](https://kotlinlang.org/)。
@@ -381,4 +394,6 @@ println(person.getPrivateName()) // "Kotlin" [!code ++]
 ## 参考
 
 1. Kotlin 官网：https://kotlinlang.org/
-2. Android Developer——《学习 Kotlin 编程语言》：https://developer.android.com/kotlin/learn
+2. 学习 Kotlin 编程语言（Android Developer）：https://developer.android.com/kotlin/learn
+3. 《Kotlin 核心编程》（水滴技术团队）
+4. 《第一行代码：Android》第三版（郭霖）

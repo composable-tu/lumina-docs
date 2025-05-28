@@ -4,14 +4,16 @@
 
 首先访问[琳琅问服务端 GitHub Releases](https://github.com/LuminaPJ/lumina-server/releases)下载琳琅问最新发行版源码。
 
-下载完毕后，解压源码，进入目录 `\lumina-server\src\main\resources`，创建一个名为 `application.yaml` 的文件，并写入以下内容：
+下载完毕后，解压源码，进入目录 `/lumina-server/src/main/resources`，创建一个名为 `application.yaml` 的文件，并写入以下内容：
 
 ::: tip
-SM2 密钥对可从由琳琅问维护的[中国商密 SM2 密钥对随机生成器](https://github.com/LuminaPJ/sm2-key-generator)程序中随机生成。默认情况下由此程序生成的 SM2 密钥对中，公钥为 65 字节，私钥为 32 字节，RAW 未压缩格式，经过 Base64 编码为字符串。
+SM2 密钥对可从由琳琅问维护的[中国商密 SM2 密钥对随机生成器](https://github.com/LuminaPJ/sm2-key-generator)（[使用指导文档](/deploy/sm2-key-gen-guide.md)）程序中随机生成。
+
+默认情况下由此程序生成的 SM2 密钥对中，公钥为 65 字节，私钥为 32 字节，RAW 未压缩格式，经过 Base64 编码为字符串。
 :::
 
 ```Yaml
-# Ktor 配置
+# Ktor 配置，高亮区域表示该项需结合自身情况填写具体内容
 ktor:
   application:
     modules:
@@ -25,7 +27,9 @@ jwt:
   audience: "" # 服务名称，如 LuminaPJ [!code highlight]
   realm: "" #  逻辑分组名称，如 default [!code highlight]
   expiresIn: 28800 # JWT 有效时间，单位秒。28800 seconds = 8 hours [!code highlight]
-  sm2: # 国密算法 SM2 密钥对配置，填入的公钥为 65 字节，私钥为 32 字节，经过 Base64 编码为字符串
+  
+  # 国密 SM2 算法密钥对配置，填入的公钥为 65 字节，私钥为 32 字节，经过 Base64 编码为字符串
+  sm2:
     publicKey: "" # SM2 公钥 [!code highlight]
     privateKey: "" # SM2 私钥 [!code highlight]
 

@@ -16,7 +16,7 @@ export default defineConfig({
                 items: [{text: '概述', link: '/usage/overview'}, {text: '快速开始', link: '/usage/quick-start'},]
             }, {text: '管理端', items: [{text: '快速开始', link: '/usage/admin-quick-start'},]}],
             '/deploy/': [{text: '基础', items: [{text: '准备工作', link: '/deploy/prepare'}]}, {
-                text: '服务端部署', items: [{text: '部署', link: '/deploy/server-deploy'},]
+                text: '服务端部署', items: [{text: '部署', link: '/deploy/server-deploy'},{text: 'SM2 密钥对生成器使用指导',  link: '/deploy/sm2-key-gen-guide'}]
             }, {
                 text: '微信小程序部署', items: [{text: '部署', link: '/deploy/weixin-mp-deploy'},]
             }, {text: '管理端部署', items: [{text: '部署', link: '/deploy/admin-deploy'},]},],
