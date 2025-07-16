@@ -13,9 +13,9 @@
 - 服务器
   - Arm64 架构或 AMD64 架构
   - Java Development Kit（JDK）21 或更高版本
-  - [PostgreSQL](https://www.postgresql.org/) 17 或更高版本
+  - [PostgreSQL](https://www.postgresql.org/) 16 或更高版本
 - 公网 IP
-- 经过 ICP 备案的域名，且支持 HTTPS
+- 经过 ICP 备案的域名，且已取得并配置完毕 HTTPS 相关证书
 
 ::: info
 由于微信小程序需要经过审核才能上线，且微信小程序审核团队无法访问组织内网，如果服务端被部署在内网会导致微信小程序审核团队无法进行正常审核，因此公网 IP 是必须的。

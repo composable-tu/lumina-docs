@@ -12,3 +12,4 @@ docs/.vitepress/dist/
 .idea/
 .vitepress/cache/
 yarn.lock
+/env.js

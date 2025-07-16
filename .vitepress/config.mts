@@ -1,7 +1,9 @@
 import {defineConfig} from 'vitepress'
+import env from '../env.js'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+    define: {'process.env': process.env},
     head: [['link', {rel: 'icon', href: '/assets/Icon.ico'}]],
     title: "LuminaPJ Docs",
     description: "在流光中闭环",
@@ -16,14 +18,18 @@ export default defineConfig({
                 items: [{text: '概述', link: '/usage/overview'}, {text: '快速开始', link: '/usage/quick-start'},]
             }, {text: '管理端', items: [{text: '快速开始', link: '/usage/admin-quick-start'},]}],
             '/deploy/': [{text: '基础', items: [{text: '准备工作', link: '/deploy/prepare'}]}, {
-                text: '服务端部署', items: [{text: '部署', link: '/deploy/server-deploy'},{text: 'SM2 密钥对生成器使用指导',  link: '/deploy/sm2-key-gen-guide'}]
+                text: '服务端部署', items: [{text: '构建 Fat Jar', link: '/deploy/build-fat-jar'}, {
+                    text: '服务端环境搭建与部署', link: '/deploy/server-deploy'
+                }, {text: 'SM2 密钥对生成器使用指导', link: '/deploy/sm2-key-gen-guide'}]
             }, {
                 text: '微信小程序部署', items: [{text: '部署', link: '/deploy/weixin-mp-deploy'},]
             }, {text: '管理端部署', items: [{text: '部署', link: '/deploy/admin-deploy'},]},],
             '/develop/': [{
                 text: '开发指导', items: [{text: '快速开始', link: '/develop/quick-start'},]
             }, {
-                text: 'Ktor 后端开发', items: [{text: 'Kotlin 入门指导', link: '/develop/kotlin-quick-start'}, {text: '快速开始', link: '/develop/ktor-quick-start'}],
+                text: 'Ktor 后端开发', items: [{text: 'Kotlin 入门指导', link: '/develop/kotlin-quick-start'}, {
+                    text: '快速开始', link: '/develop/ktor-quick-start'
+                }],
             }, {
                 text: '微信小程序用户端开发', items: [{text: '快速开始', link: '/develop/weixin-mp-quick-start'}, {
                     text: '服务端 API 参考', link: '/develop/api-reference'
@@ -32,7 +38,7 @@ export default defineConfig({
         },
         socialLinks: [{icon: 'github', link: 'https://github.com/LuminaPJ'}],
         footer: {
-            message: '<a href="https://beian.mps.gov.cn/#/query/webSearch">ICP 备案占位符</a>',
+            message: `<a href="https://beian.miit.gov.cn/">ICP 备案号：${env.VITE_ICP_LICENSE || 'ICP 备案占位符'}</a>`,
             copyright: 'Copyright © 2025 LuminaPJ'
         },
         editLink: {
@@ -58,7 +64,7 @@ export default defineConfig({
         returnToTopLabel: '返回顶部',
         sidebarMenuLabel: '导航',
         externalLinkIcon: true,
-        outline: {label: '文章目录', level: [2, 3]}
+        outline: {label: '文章目录', level: [2, 6]}
     },
     markdown: {
         container: {
