@@ -51,8 +51,9 @@ sudo useradd luminauser
     sudo yum update
     ```
     :::
-2. 安装 SDKMAN!
+2. 切换到运行用户，并以运行用户身份安装 SDKMAN!
     ```Shell
+    su - luminauser # 切换到运行用户
     export SDKMAN_DIR="/usr/local/sdkman" && curl -s "https://get.sdkman.io" | bash
     ```
 
@@ -63,7 +64,7 @@ sudo useradd luminauser
     ```
 3. 查看 SDKMAN! 中的腾讯 Kona JDK 可用版本
     ```Shell
-    sudo -u luminauser sdk list java | grep kona
+    sdk list java | grep kona
     ```
    
     会列出所有可用的版本，如：
@@ -74,16 +75,16 @@ sudo useradd luminauser
                   |     | 11.0.19      | kona    |            | 11.0.19-kona
                   |     | 8.0.372      | kona    |            | 8.0.372-kona
     ```
-4. 使用 SDKMAN! 安装腾讯 Kona JDK 21
+4. 使用 SDKMAN! 安装腾讯 Kona JDK 21，如上述 Kona 最新版为 `21.0.7-kona`，则执行以下命令：
     ```Shell
-    sudo -u luminauser sdk install java 21.0.7-kona
+    sdk install java 21.0.7-kona
     ```
 
 ::: tip
 验证服务端已安装的腾讯 Kona JDK 版本
 
 ```Shell
-sudo -u luminauser java -version
+java -version
 ```
 
 如果执行上述语句后的显示内容类似于以下文本，则说明腾讯 Kona JDK 安装成功：
@@ -100,6 +101,7 @@ OpenJDK 64-Bit Server VM (build 21.0.7+10-LTS, mixed mode, sharing)
 1. 更新服务端软件包列表
     ::: code-group
     ```Shell [Debian 系]
+    su - root # 切换回 root 用户 
     sudo apt update && sudo apt upgrade
     ```
 
@@ -204,6 +206,8 @@ OpenJDK 64-Bit Server VM (build 21.0.7+10-LTS, mixed mode, sharing)
     [Service]
     User=luminauser  # 使用创建的用户（若未创建则改为 root）
     WorkingDirectory=/path/to/deploy
+    Environment="PATH=<your_path>"
+    Environment="JAVA_HOME=<your_java_home>"
     ExecStart=java -jar /path/to/deploy/lumina-server-all.jar >> /path/to/deploy/lumina.log 2>&1 # 启动服务并重定向日志
     SuccessExitStatus=143
     Restart=always
@@ -212,9 +216,20 @@ OpenJDK 64-Bit Server VM (build 21.0.7+10-LTS, mixed mode, sharing)
     [Install]
     WantedBy=multi-user.target
     ```
+   
+    ::: tip
+    不要忘记将 `<your_path>`、`<your_java_home>` 和 `/path/to/deploy` 替换为实际路径！
+
+    其中，`<your_path>` 和 `<your_java_home>` 可从以下命令获取：
+    
+    ```Shell
+    echo $PATH # 获取 PATH
+    echo $JAVA_HOME # 获取 JAVA_HOME
+    ```
+    :::
 4. 启动服务并设置自启
     ```Shell
     sudo systemctl daemon-reload
-    sudo systemctl start lumina
     sudo systemctl enable lumina
+    sudo systemctl start lumina
     ```
