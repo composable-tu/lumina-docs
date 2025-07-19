@@ -1,7 +1,7 @@
 # 服务端环境搭建与部署 <Badge type="tip" text="尚未完成" />
 
 ::: info
-服务端部署分为两部分，一是在自己的开发用电脑下载源码、填写琳琅问服务端配置并编译出 Fat Jar 文件，并上传至服务器；二是在服务器上安装 Ktor 运行环境、安装和配置 PostgreSQL，以及其他必要的通用 Web 服务配置。
+服务端部署分为两部分，一是[在自己的开发用电脑下载源码、填写琳琅问服务端配置并编译出 Fat Jar 文件，并上传至服务器](./build-fat-jar.md)；二是在服务器上安装 Ktor 运行环境、安装和配置 PostgreSQL，以及其他必要的通用 Web 服务配置。
 :::
 
 ## 安装与配置琳琅问运行环境
@@ -181,11 +181,17 @@ OpenJDK 64-Bit Server VM (build 21.0.7+10-LTS, mixed mode, sharing)
     ```Shell
     scp /path/to/lumina-server-all.jar <your_username>@<your_server_ip>:/path/to/deploy/
     ```
-2. 为运行用户授权目录
+2. 创建运行脚本
+    在 `/path/to/deploy/` 目录下创建运行脚本 `lumina.sh`，并写入以下内容：
+
+    ```Shell
+    java -jar /usr/local/luminapj-server/lumina-server-all.jar >> /usr/local/luminapj-server/lumina.log 2>&1 # 启动服务并重定向日志
+    ```
+3. 为运行用户授权目录
     ```Shell
     sudo chown -R luminauser:luminauser /path/to/deploy
     ```
-3. 创建 Systemd 服务文件
+4. 创建 Systemd 服务文件
     ::: code-group
     ```Shell [Debian 系]
     sudo nano /etc/systemd/system/lumina.service
@@ -208,7 +214,7 @@ OpenJDK 64-Bit Server VM (build 21.0.7+10-LTS, mixed mode, sharing)
     WorkingDirectory=/path/to/deploy
     Environment="PATH=<your_path>"
     Environment="JAVA_HOME=<your_java_home>"
-    ExecStart=java -jar /path/to/deploy/lumina-server-all.jar >> /path/to/deploy/lumina.log 2>&1 # 启动服务并重定向日志
+    ExecStart=/bin/bash -c '/path/to/deploy/lumina.sh'
     SuccessExitStatus=143
     Restart=always
     RestartSec=30
@@ -227,7 +233,7 @@ OpenJDK 64-Bit Server VM (build 21.0.7+10-LTS, mixed mode, sharing)
     echo $JAVA_HOME # 获取 JAVA_HOME
     ```
     :::
-4. 启动服务并设置自启
+5. 启动服务并设置自启
     ```Shell
     sudo systemctl daemon-reload
     sudo systemctl enable lumina
