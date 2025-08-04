@@ -185,7 +185,7 @@ OpenJDK 64-Bit Server VM (build 21.0.7+10-LTS, mixed mode, sharing)
     在 `/path/to/deploy/` 目录下创建运行脚本 `lumina.sh`，并写入以下内容：
 
     ```Shell
-    java -jar /usr/local/luminapj-server/lumina-server-all.jar >> /usr/local/luminapj-server/lumina.log 2>&1 # 启动服务并重定向日志
+    java -jar /usr/local/luminapj-server/lumina-server-all.jar >> /usr/local/luminapj-server/lumina_$(date '+%Y-%m-%d_%H-%M-%S').log 2>&1 # 启动服务并重定向日志
     ```
 3. 为运行用户授权目录
     ```Shell

@@ -31,18 +31,20 @@ ktor:
       - org.lumina.ApplicationKt.module
   deployment:
     port: 8080 # 服务端的监听端口 [!code highlight]
+  environment: stable # Ktor 运行环境，development、dev、test 表示开发环境，其他任意值表示生产环境 [!code highlight]
 
 # JWT 配置
 jwt:
   domain: "" # 域名，如 https://example.com [!code highlight]
-  audience: "" # 服务名称，如 LuminaPJ [!code highlight]
+  audience: "" # 目标客户端，可以填目标微信小程序的 AppID [!code highlight]
   realm: "" #  逻辑分组名称，如 default [!code highlight]
+  issuer: "" # 服务签发者，如 LuminaPJ [!code highlight]
   expiresIn: 28800 # JWT 有效时间，单位秒。28800 seconds = 8 hours [!code highlight]
   
   # 国密 SM2 算法密钥对配置，填入的公钥为 65 字节，私钥为 32 字节，经过 Base64 编码为字符串
   sm2:
-    publicKey: "" # SM2 公钥 [!code highlight]
-    privateKey: "" # SM2 私钥 [!code highlight]
+    signPublicKey: "" # 用于 JWT 签名的 SM2 公钥 [!code highlight]
+    signPrivateKey: "" # 用于 JWT 签名的 SM2 私钥 [!code highlight]
 
 # 数据库配置
 db:
