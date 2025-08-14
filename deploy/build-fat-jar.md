@@ -42,9 +42,12 @@ jwt:
   expiresIn: 28800 # JWT 有效时间，单位秒。28800 seconds = 8 hours [!code highlight]
   
   # 国密 SM2 算法密钥对配置，填入的公钥为 65 字节，私钥为 32 字节，经过 Base64 编码为字符串
+  # 请使用两对不同的密钥对，分别用于 JWT 的签名部分（JSON Web Signature，使用 signKey）和加密部分（JSON Web Encryption，使用 encKey）
   sm2:
-    signPublicKey: "" # 用于 JWT 签名的 SM2 公钥 [!code highlight]
-    signPrivateKey: "" # 用于 JWT 签名的 SM2 私钥 [!code highlight]
+    signPublicKey: "" # 用于 JWS 的签名用 SM2 公钥 [!code highlight]
+    signPrivateKey: "" # 用于 JWS 的签名用 SM2 私钥 [!code highlight]
+    encPublicKey: "" # 用于 JWE 的加密用 SM2 公钥 [!code highlight]
+    encPrivateKey: "" # 用于 JWE 的加密用 SM2 私钥 [!code highlight]
 
 # 数据库配置
 db:
