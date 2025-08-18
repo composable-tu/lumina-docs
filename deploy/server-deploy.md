@@ -70,14 +70,14 @@ sudo useradd luminauser
     会列出所有可用的版本，如：
 
     ```Text
-    Tencent       |     | 21.0.7       | kona    |            | 21.0.7-kona
-                  |     | 17.0.7       | kona    |            | 17.0.7-kona
-                  |     | 11.0.19      | kona    |            | 11.0.19-kona
-                  |     | 8.0.372      | kona    |            | 8.0.372-kona
+    Tencent       |     | 21.0.8       | kona    |            | 21.0.8-kona
+                  |     | 17.0.16      | kona    |            | 17.0.16-kona
+                  |     | 11.0.28      | kona    |            | 11.0.28-kona
+                  |     | 8.0.462      | kona    |            | 8.0.462-kona
     ```
-4. 使用 SDKMAN! 安装腾讯 Kona JDK 21，如上述 Kona 最新版为 `21.0.7-kona`，则执行以下命令：
+4. 使用 SDKMAN! 安装腾讯 Kona JDK 21，如上述 Kona 最新版为 `21.0.8-kona`，则执行以下命令：
     ```Shell
-    sdk install java 21.0.7-kona
+    sdk install java 21.0.8-kona
     ```
 
 ::: tip
@@ -90,9 +90,9 @@ java -version
 如果执行上述语句后的显示内容类似于以下文本，则说明腾讯 Kona JDK 安装成功：
 
 ```Text
-openjdk version "21.0.7"
-OpenJDK Runtime Environment (build 21.0.7+10-LTS)
-OpenJDK 64-Bit Server VM (build 21.0.7+10-LTS, mixed mode, sharing)
+openjdk version "21.0.8" 2025-07-24 LTS
+OpenJDK Runtime Environment TencentKonaJDK (build 21.0.8+1-LTS)
+OpenJDK 64-Bit Server VM TencentKonaJDK (build 21.0.8+1-LTS, mixed mode, sharing)
 ```
 :::
 
