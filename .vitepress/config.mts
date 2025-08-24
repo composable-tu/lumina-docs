@@ -16,15 +16,17 @@ export default defineConfig({
             '/usage/': [{
                 text: '基础',
                 items: [{text: '概述', link: '/usage/overview'}, {text: '快速开始', link: '/usage/quick-start'},]
-            }, {text: '管理端', items: [{text: '快速开始', link: '/usage/admin-quick-start'},]}],
-            '/deploy/': [{text: '基础', items: [{text: '准备工作', link: '/deploy/prepare'}]}, {
+            }, {text: '管理端', items: [{text: '快速开始', link: '/usage/admin-quick-start'},]}], '/deploy/': [{
+                text: '基础', items: [{text: '准备工作', link: '/deploy/prepare'}]
+            }, {
                 text: '服务端部署', items: [{text: '构建 Fat Jar', link: '/deploy/build-fat-jar'}, {
                     text: '服务端环境搭建与部署', link: '/deploy/server-deploy'
                 }, {text: 'SM2 密钥对生成器使用指导', link: '/deploy/sm2-key-gen-guide'}]
             }, {
                 text: '微信小程序部署', items: [{text: '部署', link: '/deploy/weixin-mp-deploy'},]
-            }, {text: '管理端部署', items: [{text: '部署', link: '/deploy/admin-deploy'},]},],
-            '/develop/': [{
+            }, {text: '管理端部署', items: [{text: '部署', link: '/deploy/admin-deploy'},]}, {
+                text: '其它', items: [{text: '法律文件模板', link: '/deploy/agreement-docs-templates'},]
+            }], '/develop/': [{
                 text: '开发指导', items: [{text: '快速开始', link: '/develop/quick-start'},]
             }, {
                 text: 'Ktor 后端开发', items: [{text: 'Kotlin 入门指导', link: '/develop/kotlin-quick-start'}, {

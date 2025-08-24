@@ -10,9 +10,6 @@ hero:
       text: 使用指南
       link: /usage/quick-start
     - theme: alt
-      text: 开发指导
-      link: /develop/quick-start
-    - theme: alt
       text: GitHub
       link: https://github.com/LuminaPJ
 

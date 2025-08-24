@@ -17,7 +17,7 @@ JDK 推荐使用[腾讯 Kona JDK 21](https://github.com/Tencent/TencentKona-21)�
 
 ## 下载源码并填写配置
 
-首先访问[琳琅问服务端 GitHub Releases](https://github.com/LuminaPJ/lumina-server/releases)下载琳琅问最新发行版源码。
+首先访问[琳琅问服务端 GitHub Releases](https://github.com/LuminaPJ/lumina-server/releases)下载琳琅问服务端最新发行版源码。
 
 下载完毕后，解压源码，使用 IntelliJ IDEA 打开解压后文件夹，等待 IntelliJ IDEA 自动导入项目并下载项目 Maven 与 Gradle 依赖。
 
