@@ -3,7 +3,6 @@ import env from '../env.js'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-    define: {'process.env': process.env},
     head: [['link', {rel: 'icon', href: '/assets/Icon.ico'}]],
     title: "LuminaPJ Docs",
     description: "在流光中闭环",
