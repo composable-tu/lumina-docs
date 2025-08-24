@@ -124,7 +124,7 @@ OpenJDK 64-Bit Server VM TencentKonaJDK (build 21.0.8+1-LTS, mixed mode, sharing
     ::: info
     由于 Red Hat 系的 PostgreSQL 官方源因系统版本和平台而异，因此请参照[此文档](https://www.postgresql.org/download/linux/redhat/)进行安装。
     :::
-3. 初始化并设置开机启动启动 PostgreSQL
+3. 初始化并设置开机启动 PostgreSQL
     ::: code-group
     ```Shell [Debian 系]
     sudo systemctl enable postgresql.service
