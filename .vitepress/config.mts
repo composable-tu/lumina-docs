@@ -26,7 +26,7 @@ export default defineConfig({
             }, {text: '管理端部署', items: [{text: '部署', link: '/deploy/admin-deploy'},]}, {
                 text: '其它', items: [{text: '法律文件模板', link: '/deploy/agreement-docs-templates'},]
             }], '/develop/': [{
-                text: '开发指导', items: [{text: '快速开始', link: '/develop/quick-start'},]
+                text: '开发指导', items: [{text: '快速开始', link: '/develop/quick-start'},{text: 'TODO 清单', link: '/develop/todo-list'}]
             }, {
                 text: 'Ktor 后端开发', items: [{text: 'Kotlin 入门指导', link: '/develop/kotlin-quick-start'}, {
                     text: '快速开始', link: '/develop/ktor-quick-start'
