@@ -33,7 +33,7 @@ JDK 推荐使用[腾讯 Kona JDK 21](https://github.com/Tencent/TencentKona-21)�
 
 部署琳琅问微信小程序前，请确保您已经具备以下微信小程序资源及其操作权限：
 
-- 以组织为主体的[微信公众平台](https://mp.weixin.qq.com/)微信小程序账号
+- 以组织为主体的[微信公众平台](https://mp.weixin.qq.com/)微信小程序账号，并取得[微信小程序用工关系](https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/laboruse/intro.html)权限
 - [微信开发者工具](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)
 
 ## 管理端资源准备

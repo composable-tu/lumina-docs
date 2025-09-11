@@ -23,7 +23,7 @@
 
 ## 网页管理端
 
-- 计划选型：Node.js 运行时 + Next.js 框架 + TypeScript + Prisma ORM（或将数据库增删改查逻辑放在 Ktor 中）+ Hero UI 组件库
+- 计划选型：[Node.js](https://nodejs.org/) 运行时 + [Next.js](https://nextjs.org/) 框架 + [TypeScript](https://www.typescriptlang.org/) + [Prisma](https://www.prisma.io/) ORM（或将数据库增删改查逻辑放在 Ktor 中）+ [Hero](https://www.heroui.com/) UI 组件库
 - 微信开放平台扫码登录，需要以组织为主体注册微信开放平台
 - 配合 Ktor 端路由完成动态验证码签到和动态二维码签到功能
 - 新角色：组织管理员，可对本地部署的服务器全域团体进行管理，可更改用户号和用户名
